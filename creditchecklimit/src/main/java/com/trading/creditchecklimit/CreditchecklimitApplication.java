@@ -1,7 +1,7 @@
 package com.trading.creditchecklimit;
 
 import com.trading.creditchecklimit.data.InitialData;
-import com.trading.creditchecklimit.managers.QueueListener;
+import com.trading.creditchecklimit.handler.QueueHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,7 +10,9 @@ public class CreditchecklimitApplication {
 
 	public static void main(String[] args) {
 
-		InitialData.loadInitialData();
+		InitialData.loadFromFile();
+		//InitialData.loadInitialData();
+
 
 
 
@@ -19,7 +21,9 @@ public class CreditchecklimitApplication {
 
 		SpringApplication.run(CreditchecklimitApplication.class, args);
 
-		QueueListener queueListener = QueueListener.getQueueListener();
+
+
+		QueueHandler queueListener = QueueHandler.getQueueListener();
 		queueListener.processOrders();
 
 

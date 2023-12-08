@@ -1,8 +1,7 @@
 package com.trading.creditchecklimit.service;
 
 
-import com.trading.creditchecklimit.data.InitialData;
-import com.trading.creditchecklimit.managers.OrderManager;
+import com.trading.creditchecklimit.handler.OrderHandler;
 import com.trading.creditchecklimit.model.Order;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class OrderService {
 
 
-    OrderManager orderManager = OrderManager.getOrderManager();
+    OrderHandler orderManager = OrderHandler.getOrderHandler();
     public void acceptOrder(int  side,int volume,String security,String sector,String trader)
     {
 
@@ -34,5 +33,15 @@ public class OrderService {
     public List<Order> getAllWaitingOrder()
     {
         return orderManager.getAllWaitingOrder();
+    }
+
+    public List<Order> getAllBookings()
+    {
+        return orderManager.getAllBookings();
+    }
+
+    public List<String> getAllLogs()
+    {
+        return orderManager.getAllLogs();
     }
 }

@@ -29,4 +29,17 @@ public class OrderController {
 
         return orderService.getAllWaitingOrder();
     }
+
+    @GetMapping( value = "/bookings",  produces = "application/json")
+    public List<Order> getAllBookings() {
+
+        return orderService.getAllBookings();
+    }
+
+    @GetMapping( value = "/logger",  produces = "application/json")
+    public List<String> getAllLogs() {
+
+        return orderService.getAllLogs();
+    }
+
 }

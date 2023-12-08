@@ -1,7 +1,7 @@
 package com.trading.creditchecklimit.model;
 
 
-import com.trading.creditchecklimit.managers.OrderManager;
+import com.trading.creditchecklimit.handler.OrderHandler;
 
 
 public class Order {
@@ -15,19 +15,20 @@ public class Order {
 
     private String trader;
 
-    private String limitStatus;
+    private String status;
 
 
 
     public Order(int side,int volume,String security,String sector,String trader)
     {
-        OrderManager orderManager = OrderManager.getOrderManager();
+        OrderHandler orderManager = OrderHandler.getOrderHandler();
         orderNo=orderManager.getOrderNo();
         this.side=side;
         this.volume=volume;
         this.security=security;
         this.sector=sector;
         this.trader=trader;
+        this.status="";
     }
 
 
@@ -76,7 +77,13 @@ public class Order {
     @Override
     public String toString()
     {
-        return "OrderNo: "+ getOrderNo() +" side: "+side+" volume: "+volume+" security: "+security+" sector: "+sector+" trader: "+trader+" limitStatus: "+limitStatus;
+        return "orderNo:"+ getOrderNo()
+                +" side:"+side
+                +" volume: "+volume
+                //+" security: "+security
+                 +" sector:"+sector
+                //+" trader: "+trader
+                +" status:"+ status;
 
     }
 
@@ -85,11 +92,11 @@ public class Order {
     }
 
 
-    public String getLimitStatus() {
-        return limitStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setLimitStatus(String limitStatus) {
-        this.limitStatus = limitStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -1,6 +1,6 @@
 package com.trading.creditchecklimit.service;
 
-import com.trading.creditchecklimit.managers.QueueListener;
+import com.trading.creditchecklimit.handler.QueueHandler;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,7 +8,7 @@ public class QueueService {
 
     public void start()
     {
-        QueueListener queueListener = QueueListener.getQueueListener();
+        QueueHandler queueListener = QueueHandler.getQueueListener();
         queueListener.start();
     }
 

@@ -5,22 +5,29 @@ public class SectorLimit {
 
     private String code;
 
-    private Long totalValue;
+    private long totalValue;
 
-    private Long buyAmount;
+    private long buyAmount;
 
-    private Long sellAmount;
+    private long remBuyAmount;
 
-    private int allowedRate;
+    private long sellAmount;
+
+    private long remSellAmount;
+
+    private float allowedRate;
 
 
 
-    public SectorLimit(String code, long totalValue,long buyAmount, long sellAmount, int allowedRate) {
+    public SectorLimit(String code, long totalValue, float allowedRate) {
         this.code = code;
         this.totalValue = totalValue;
-        this.buyAmount = buyAmount;
-        this.sellAmount = sellAmount;
+        this.buyAmount = 0;
+        this.sellAmount = 0;
         this.allowedRate = allowedRate;
+        this.remSellAmount =(long)(allowedRate/100*totalValue);
+        this.remBuyAmount = (long)(allowedRate/100*totalValue);
+
 
     }
 
@@ -57,20 +64,47 @@ public class SectorLimit {
         this.sellAmount = sellAmount;
     }
 
-    public int getAllowedRate() {
+    public float getAllowedRate() {
         return allowedRate;
     }
 
-    public void setAllowedRate(int allowedRate) {
+    public void setAllowedRate(float allowedRate) {
         this.allowedRate = allowedRate;
     }
 
-    @Override
-    public String toString()
-    {
-    return "code: "+code+" totalValue: "+totalValue+" buyAmount: "+buyAmount+" sellAmount: "+sellAmount+" allowedRate: "+allowedRate;
+
+    public String toString(int side) {
+        if (side == 1)
+            return //"code:"+code
+                    " totalValue:" + totalValue
+                            + " allowedRate: " + allowedRate
+                            + " buyAmount: " + buyAmount
+                            + " remBuyAmount:" + remBuyAmount;
+
+        else
+
+            return //"code:"+code
+                    " totalValue:" + totalValue
+                            + " allowedRate: " + allowedRate
+                            + " sellAmount: " + sellAmount
+                            + " remSellAmount:" + remSellAmount;
 
     }
 
 
+    public long getRemBuyAmount() {
+        return remBuyAmount;
+    }
+
+    public void setRemBuyAmount(Long remBuyAmount) {
+        this.remBuyAmount = remBuyAmount;
+    }
+
+    public long getRemSellAmount() {
+        return remSellAmount;
+    }
+
+    public void setRemSellAmount(long remSellAmount) {
+        this.remSellAmount = remSellAmount;
+    }
 }
