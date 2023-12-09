@@ -11,15 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class SectorLimitHandler {
 
-    private static SectorLimitHandler sectorManager = null;
+    private static SectorLimitHandler sectorLimitHandler = null;
 
     OrderHandler orderHandler = OrderHandler.getOrderHandler();
 
-    public static SectorLimitHandler getSectorManager()
+    public static SectorLimitHandler getSectorLimitHandler()
     {
-        if(sectorManager==null)
-            sectorManager = new SectorLimitHandler();
-        return sectorManager;
+        if(sectorLimitHandler ==null)
+            sectorLimitHandler = new SectorLimitHandler();
+        return sectorLimitHandler;
     }
     public  Map<String, SectorLimit> sectorLimitMap = new ConcurrentHashMap<>();
 
@@ -42,7 +42,7 @@ public class SectorLimitHandler {
         else {
             if (order.getSide() == 1) //buy order
             {
-                //float buyPercentage = ((float) (order.getVolume() + limit.getBuyAmount()) / limit.getTotalValue()) * 100;
+
                 if (order.getVolume() <= limit.getRemBuyAmount()) {
                     limit.setBuyAmount(limit.getBuyAmount() + order.getVolume());
                     limit.setRemBuyAmount(limit.getRemBuyAmount() - order.getVolume());
@@ -56,7 +56,7 @@ public class SectorLimitHandler {
 
             } else if (order.getSide() == 2) //sell order
             {
-                //float sellPercentage = ((float) (order.getVolume() + limit.getSellAmount()) / limit.getTotalValue()) * 100;
+
                 if (order.getVolume() <= limit.getRemSellAmount()) {
                     limit.setSellAmount(limit.getSellAmount() + order.getVolume());
                     limit.setRemSellAmount(limit.getRemSellAmount() - order.getVolume());

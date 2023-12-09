@@ -29,20 +29,19 @@ public class OrderExecutionService implements Callable<Boolean> {
     public Boolean  call() throws Exception {
 
         OrderHandler orderManager = OrderHandler.getOrderHandler();
-        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorManager();
+        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorLimitHandler();
 
 
         if(sectorManager.checkCreditLimit(order))
         {
-            //order.setLimitStatus("accepted");
+
             orderManager.bookOrderd(order);
-            //System.out.println(Thread.currentThread().getName()+" executing:"+order.toString());
+
 
 
             return true;
         }
-        //order.setLimitStatus("rejected");
-        //System.out.println(Thread.currentThread().getName()+" executing:"+order.toString());
+
         return false;
     }
 }

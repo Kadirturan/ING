@@ -23,7 +23,7 @@ public class SectorLimitHandlerTest {
     @Test
     public void checkOrderEntrySingle() {
 
-       SectorLimitHandler sectorManager = SectorLimitHandler.getSectorManager();
+       SectorLimitHandler sectorManager = SectorLimitHandler.getSectorLimitHandler();
        List<SectorLimit> sectorLimits = new ArrayList<>();
        SectorLimit sectorLimit = new SectorLimit("Sector1",10000,20);
        sectorLimits.add(sectorLimit);
@@ -57,7 +57,7 @@ public class SectorLimitHandlerTest {
     @Test
     public void checkOrderEntryMultiple() {
 
-        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorManager();
+        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorLimitHandler();
         List<SectorLimit> sectorLimits = new ArrayList<>();
         SectorLimit sectorLimit = new SectorLimit("Sector1", 5000, 20);
         sectorLimits.add(sectorLimit);

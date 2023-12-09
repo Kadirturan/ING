@@ -11,14 +11,14 @@ import java.util.Vector;
 
 public class OrderHandler {
 
-    public static OrderHandler orderManager = null;
+    public static OrderHandler orderHandler = null;
 
 
 
     public static OrderHandler getOrderHandler() {
-        if(orderManager==null)
-            orderManager = new OrderHandler();
-        return orderManager;
+        if(orderHandler ==null)
+            orderHandler = new OrderHandler();
+        return orderHandler;
     }
 
     int orderNo =0;

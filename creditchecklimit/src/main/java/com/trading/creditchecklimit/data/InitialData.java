@@ -7,7 +7,6 @@ import com.trading.creditchecklimit.model.SectorLimit;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,9 +47,9 @@ public class InitialData {
         return orderList;
     }
 
-    public static void loadInitialData()
+    public static void loadRandomValues()
     {
-        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorManager();
+        SectorLimitHandler sectorManager = SectorLimitHandler.getSectorLimitHandler();
         sectorManager.addSectorLimits(sectorLimitList);
         OrderHandler orderManager = OrderHandler.getOrderHandler();
         orderManager.addOrdersToQueue(getInitialOrders());
@@ -60,7 +59,7 @@ public class InitialData {
 
     public static void loadFromFile()
     {
-        SectorLimitHandler sectorLimitHandler = SectorLimitHandler.getSectorManager();
+        SectorLimitHandler sectorLimitHandler = SectorLimitHandler.getSectorLimitHandler();
         OrderHandler orderHandler = OrderHandler.getOrderHandler();
 
 

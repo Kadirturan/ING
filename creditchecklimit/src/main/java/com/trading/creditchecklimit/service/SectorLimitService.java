@@ -9,10 +9,10 @@ import java.util.List;
 @Service
 public class SectorLimitService {
 
-    SectorLimitHandler sectorManager = SectorLimitHandler.getSectorManager();
+    SectorLimitHandler sectorLimitHandler = SectorLimitHandler.getSectorLimitHandler();
     public List<SectorLimit> getSectorStatus()
     {
-        return sectorManager.sectorLimitMap.values().stream().toList();
+        return sectorLimitHandler.sectorLimitMap.values().stream().toList();
     }
 
 
