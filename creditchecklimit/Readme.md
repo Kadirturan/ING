@@ -107,5 +107,5 @@ En application that checks available limit for each order entry concurrently bas
 
 
 
-github repo link
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+
+[github repo link](https://github.com/Kadirturan/ING)
